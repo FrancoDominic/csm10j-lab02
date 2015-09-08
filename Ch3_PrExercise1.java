@@ -7,7 +7,7 @@ Filename:   Ch3_PrExercise1.java
 
 
 
-//package Ch3_PrExercise1;
+//package Ch3_PrExercise1; (this was commented out so this code may be compiled using terminal)
 
 //this imports all the necessary packages and classes
 import java.io.*;
@@ -23,7 +23,8 @@ public class Ch3_PrExercise1
     {
         //declaration of variables
         double length, width, areaRectangle, perimeter, radius, areaCircle,
-                circumference, beginningBalance, interestRate, finalBalance, pi;
+                circumference, beginningBalance, interestRate, finalBalance,
+                pi, interestPercent;
         
         int age, nextLetter;
         
@@ -32,10 +33,10 @@ public class Ch3_PrExercise1
         String firstName;
         String lastName;
       
-        //this is where the program gets the data
+        //this is where the program gets the data and associates inFile as a Scanner type variable
         Scanner inFile = new Scanner(new File("inData.txt"));
         
-        //this is how the program outputs the data as a .txt
+        //this is how the program outputs the data as a .txt and associates outFile as a PrintWriter type variable
         PrintWriter outFile = new PrintWriter(new File("outData.txt"));
         
         //this is how the program assigns values to the variables from the data
@@ -57,8 +58,9 @@ public class Ch3_PrExercise1
         pi = 3.1416;
         areaCircle = (pi*(radius*radius));
         circumference = 2*pi*radius;
-        finalBalance = (beginningBalance*interestRate) + beginningBalance;
-        nextLetter = (int)letter+1;
+        interestPercent = interestRate*0.010;//this converts interest rate from percentage to decimal
+        finalBalance = (beginningBalance*interestPercent) + beginningBalance;
+        nextLetter = (int)letter+1;//the ascii value must be an int so that it may be incremented
         
         //this forces the doubles to round to two decimal places
         DecimalFormat decim = new DecimalFormat("#.00");
@@ -88,7 +90,7 @@ public class Ch3_PrExercise1
         
         //"The character that comes after A..."
         outFile.print("The character that comes after " + letter + 
-                " in the ASCII set is " + (char)nextLetter);
+                " in the ASCII set is " + (char)nextLetter);      //this converts the int ASCII value back to a char
         outFile.println('\n');
         
       
